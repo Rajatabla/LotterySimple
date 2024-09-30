@@ -20,10 +20,10 @@ package main.java.org.example;
 ////////////////////
 
 //Изменить написанный код
-//        Распределите ответственность написанного кода в соответствующие классы и методы
-//        Сохраните номера лотереи в массиве
+//        Распределите ответственность написанного кода в соответствующие классы и методы - ???
+//        Сохраните номера лотереи в массиве - ???
 //        Введите контроль за количеством номеров в лотереи и от пользователя
-//        Создайте класс Константы, определите COUNT_SET_SIZE = 5
+//        * Создайте класс Константы, определите COUNT_SET_SIZE = 5
 //        Добавьте проверку пользовательских номеров с номерами лотереи
 //        Реализуйте метод в классе Utils
 //        Метод должен принимать два массива (lotteryNumber, userNumber)
@@ -35,7 +35,7 @@ package main.java.org.example;
 import java.util.Random;
 import java.util.Scanner;
 
-public class CorrectGameVariant {
+public class LotteryGameSimple {
     public static void main(String[] args) {
 
         int winOne = 0;
@@ -51,18 +51,14 @@ public class CorrectGameVariant {
         int userFour = 0;
         int userFive = 0;
 
+        int [] lotteryNumber = new int [5];
+        int [] userNumber = new int [5];
+
+
+
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
-//
 
-//        for (int i = 0; i < 5 ; i++) {
-//            System.out.println("Enter any number from 1 to 50");
-//            userOne = scanner.nextInt();
-//            if (userOne < 1 || userOne > 50) {
-//                System.out.println("Entered number does not belong to 1 to 50");
-//            }
-//
-//        }
         int i = 1;
         int userEntered = 0;
         while (i <= 5) {
@@ -106,26 +102,10 @@ public class CorrectGameVariant {
                         }
                         break;
 
-                }
-//                if (i == 1) {
-//                    userOne = userEntered;
-//                }
-//                if (i == 2) {
-//                    userTwo = userEntered;
-//                }
-//                if (i == 3) {
-//                    userThree = userEntered;
-//                }
-//                if (i == 4) {
-//                    userFour = userEntered;
-//                }
-//                if (i == 5) {
-//                    userFive = userEntered;
-//                }
 
+                }
 
             }
-
         }
 
         i = 1;
@@ -133,55 +113,40 @@ public class CorrectGameVariant {
         while (i <= 5) {
             randomWin = random.nextInt(1, 51);
 
-//            if (i == 1) {
-//                winOne = randomWin;
-//            }
-//            if (i == 2) {
-//                winTwo = randomWin;
-//            }
-//            if (i == 3) {
-//                winThree = randomWin;
-//            }
-//            if (i == 4) {
-//                winFour = randomWin;
-//            }
-//            if (i == 5) {
-//                winFive = randomWin;
-//            }
+
             switch (i) {
                 case 1:
                     winOne = randomWin;
                     i++;
                     break;
 
-//                if (userEntered != userOne && userEntered != userTwo && userEntered != userThree) {
-//                    userFour = userEntered;
-//                    i++;
-//                }
-//                break;
 
                 case 2:
 
-                    if( randomWin != winOne) {
+                    if (randomWin != winOne) {
                         winTwo = randomWin;
-                    i++;}
+                        i++;
+                    }
                     break;
 
                 case 3:
-                    if( randomWin != winOne && randomWin != winTwo) {
+                    if (randomWin != winOne && randomWin != winTwo) {
                         winThree = randomWin;
-                        i++;}
+                        i++;
+                    }
                     break;
                 case 4:
-                    if( randomWin != winOne && randomWin != winTwo && randomWin != winThree) {
+                    if (randomWin != winOne && randomWin != winTwo && randomWin != winThree) {
                         winFour = randomWin;
-                        i++;}
+                        i++;
+                    }
                     break;
 
                 case 5:
-                    if( randomWin != winOne && randomWin != winTwo && randomWin != winThree && randomWin != winFour) {
+                    if (randomWin != winOne && randomWin != winTwo && randomWin != winThree && randomWin != winFour) {
                         winFive = randomWin;
-                        i++;}
+                        i++;
+                    }
                     break;
 
 
