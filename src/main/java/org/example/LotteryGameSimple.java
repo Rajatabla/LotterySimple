@@ -32,134 +32,69 @@ package main.java.org.example;
 //        Протестируйте работу лотереи в классе StartLottery
 //        Выведите результаты на консоль
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class LotteryGameSimple {
     public static void main(String[] args) {
 
-        int winOne = 0;
-        int winTwo = 0;
-        int winThree = 0;
-        int winFour = 0;
-        int winFive = 0;
 
-
-        int userOne = 0;
-        int userTwo = 0;
-        int userThree = 0;
-        int userFour = 0;
-        int userFive = 0;
-
-        int [] lotteryNumber = new int [5];
-        int [] userNumber = new int [5];
-
+        int[] lotteryNumber = new int[5];
+        int[] userNumber = new int[5];
 
 
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
-        int i = 1;
+        int i = 0;
         int userEntered = 0;
-        while (i <= 5) {
-            System.out.println("Enter any number from 1 to 50");
+        while (i < 5) {
+            System.out.println("Enter the " + (i + 1) + " number from 1 to 50");
             userEntered = scanner.nextInt();
             if (userEntered < 1 || userEntered > 50) {
                 System.out.println("Entered number does not belong to 1 to 50");
             } else {
-                switch (i) {
-                    case 1:
-                        userOne = userEntered;
-                        i++;
-                        break;
-
-
-                    case 2:
-                        if (userEntered != userOne) {
-                            userTwo = userEntered;
-                            i++;
-                        }
-                        break;
-
-                    case 3:
-                        if (userEntered != userOne && userEntered != userTwo) {
-                            userThree = userEntered;
-                            i++;
-                        }
-                        break;
-
-                    case 4:
-                        if (userEntered != userOne && userEntered != userTwo && userEntered != userThree) {
-                            userFour = userEntered;
-                            i++;
-                        }
-                        break;
-
-                    case 5:
-                        if (userEntered != userOne && userEntered != userTwo && userEntered != userThree && userEntered != userFour) {
-                            userFive = userEntered;
-                            i++;
-                        }
-                        break;
-
-
+                if (!isNumInArray(userEntered, userNumber)) {
+                    userNumber[i] = userEntered;
+                    i++;
                 }
 
             }
         }
 
-        i = 1;
+        i = 0;
         int randomWin = 0;
-        while (i <= 5) {
+        while (i < 5) {
             randomWin = random.nextInt(1, 51);
-
-
-            switch (i) {
-                case 1:
-                    winOne = randomWin;
-                    i++;
-                    break;
-
-
-                case 2:
-
-                    if (randomWin != winOne) {
-                        winTwo = randomWin;
-                        i++;
-                    }
-                    break;
-
-                case 3:
-                    if (randomWin != winOne && randomWin != winTwo) {
-                        winThree = randomWin;
-                        i++;
-                    }
-                    break;
-                case 4:
-                    if (randomWin != winOne && randomWin != winTwo && randomWin != winThree) {
-                        winFour = randomWin;
-                        i++;
-                    }
-                    break;
-
-                case 5:
-                    if (randomWin != winOne && randomWin != winTwo && randomWin != winThree && randomWin != winFour) {
-                        winFive = randomWin;
-                        i++;
-                    }
-                    break;
-
-
+            if (!isNumInArray(randomWin, lotteryNumber)) {
+                lotteryNumber[i] = randomWin;
+                i++;
             }
+
 
         }
 
-        System.out.println("Winning numbers: " + winOne + " " + winTwo + " " + winThree + " " + winFour + " " + winFive);
-        System.out.println("User entered numbers: " + userOne + " " + userTwo + " " + userThree + " " + userFour + " " + userFive);
+        System.out.println("Winning numbers: " + Arrays.toString(lotteryNumber));
+        System.out.println("User entered numbers: " + Arrays.toString(userNumber));
 
 
     }
+
+    public static boolean isNumInArray(int num, int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (num == array[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 }
+
+
 
 
 
