@@ -36,49 +36,49 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class LotteryGameSimple {
+    public static final int COUNT_SET_SIZE = 5;
+
     public static void main(String[] args) {
 
 
-        int[] lotteryNumber = new int[5];
-        int[] userNumber = new int[5];
+        int[] lotteryNumber = new int[COUNT_SET_SIZE];
+        int[] userNumber = new int[COUNT_SET_SIZE];
 
 
+        fillArrayRandom(lotteryNumber);
+
+        fillUserArray(userNumber);
+
+        int matchNumbers =  returnMatchNumbers(lotteryNumber, userNumber);
+
+
+
+        System.out.println("Winning numbers: " + Arrays.toString(lotteryNumber));
+        System.out.println("User entered numbers: " + Arrays.toString(userNumber));
+        System.out.println("Matching numbers: " + matchNumbers);
+
+
+    }
+
+    private static void fillUserArray(int[] array) {
         Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-
         int i = 0;
         int userEntered = 0;
-        while (i < 5) {
+        while (i < COUNT_SET_SIZE) {
             System.out.println("Enter the " + (i + 1) + " number from 1 to 50");
             userEntered = scanner.nextInt();
             if (userEntered < 1 || userEntered > 50) {
                 System.out.println("Entered number does not belong to 1 to 50");
             } else {
-                if (!isNumInArray(userEntered, userNumber)) {
-                    userNumber[i] = userEntered;
+                if (!isNumInArray(userEntered, array)) {
+                    array[i] = userEntered;
                     i++;
                 }
 
             }
         }
-
-        i = 0;
-        int randomWin = 0;
-        while (i < 5) {
-            randomWin = random.nextInt(1, 51);
-            if (!isNumInArray(randomWin, lotteryNumber)) {
-                lotteryNumber[i] = randomWin;
-                i++;
-            }
-
-
-        }
-
-        System.out.println("Winning numbers: " + Arrays.toString(lotteryNumber));
-        System.out.println("User entered numbers: " + Arrays.toString(userNumber));
-
-
     }
 
     public static boolean isNumInArray(int num, int[] array) {
@@ -90,9 +90,51 @@ public class LotteryGameSimple {
         return false;
     }
 
+    public static void fillArrayRandom(int[] array) {
 
+        Random random = new Random();
+        int i = 0;
+        int randomWin = 0;
+        while (i < COUNT_SET_SIZE) {
+            randomWin = random.nextInt(1, 51);
+            if (!isNumInArray(randomWin, array)) {
+                array[i] = randomWin;
+                i++;
+            }
+
+
+        }
+    }
+
+    public static int returnMatchNumbers(int[] arrayOne, int[] arrayTwo) {
+        int matchNumbers = 0;
+
+        for (int i = 0; i < arrayOne.length; i++) {
+
+            for (int j = 0; j < arrayTwo.length; j++) {
+
+                if (arrayOne[i] == arrayTwo[j]) {
+                    matchNumbers++;
+
+                    break;
+                }
+            }
+        }
+        return matchNumbers;
+
+
+    }
 
 }
+
+
+
+
+
+
+
+
+
 
 
 
