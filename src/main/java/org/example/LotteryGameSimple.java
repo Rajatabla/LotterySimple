@@ -50,14 +50,17 @@ public class LotteryGameSimple {
         fillArrayRandom(lotteryNumber);
 
         fillUserArray(userNumber);
+//       lotteryNumber =  new int [] {0,3,4,0,0};
+//       userNumber =  new int [] {6,5,4,3,2};
 
-        int matchNumbers =  returnMatchNumbers(lotteryNumber, userNumber);
+
+        int [] matchNumbers =  returnMatchNumbers(lotteryNumber, userNumber);
 
 
 
         System.out.println("Winning numbers: " + Arrays.toString(lotteryNumber));
         System.out.println("User entered numbers: " + Arrays.toString(userNumber));
-        System.out.println("Matching numbers: " + matchNumbers);
+        System.out.println("Matching numbers: " + Arrays.toString(matchNumbers));
 
 
     }
@@ -101,26 +104,25 @@ public class LotteryGameSimple {
                 array[i] = randomWin;
                 i++;
             }
-
-
         }
     }
 
-    public static int returnMatchNumbers(int[] arrayOne, int[] arrayTwo) {
-        int matchNumbers = 0;
-
+    public static int [] returnMatchNumbers(int[] arrayOne, int[] arrayTwo) {
+        int[] matchNumbers = new int [arrayOne.length];
+        int j = 0;
         for (int i = 0; i < arrayOne.length; i++) {
 
-            for (int j = 0; j < arrayTwo.length; j++) {
+            if (isNumInArray(arrayOne[i], arrayTwo)) {
+               matchNumbers [j] = arrayOne[i];
+                j++;
 
-                if (arrayOne[i] == arrayTwo[j]) {
-                    matchNumbers++;
-
-                    break;
                 }
             }
+        int[] result = new int [j];
+        for (int i = 0; i < j; i++) {
+            result [i] = matchNumbers[i];
         }
-        return matchNumbers;
+        return result;
 
 
     }
