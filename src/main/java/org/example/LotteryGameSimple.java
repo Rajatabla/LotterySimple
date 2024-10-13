@@ -47,15 +47,17 @@ public class LotteryGameSimple {
         int[] userNumber = new int[COUNT_SET_SIZE];
 
 
-        fillArrayRandom(lotteryNumber);
+        fillArray(userNumber, InputType.USER);
+        fillArray(lotteryNumber, InputType.RANDOM);
 
-        fillUserArray(userNumber);
+//        fillRandomArray(lotteryNumber);
+//        fillUserArray(userNumber);
+
 //       lotteryNumber =  new int [] {0,3,4,0,0};
 //       userNumber =  new int [] {6,5,4,3,2};
 
 
-        int [] matchNumbers =  returnMatchNumbers(lotteryNumber, userNumber);
-
+        int[] matchNumbers = returnMatchNumbers(lotteryNumber, userNumber);
 
 
         System.out.println("Winning numbers: " + Arrays.toString(lotteryNumber));
@@ -93,7 +95,7 @@ public class LotteryGameSimple {
         return false;
     }
 
-    public static void fillArrayRandom(int[] array) {
+    public static void fillRandomArray(int[] array) {
 
         Random random = new Random();
         int i = 0;
@@ -107,20 +109,35 @@ public class LotteryGameSimple {
         }
     }
 
-    public static int [] returnMatchNumbers(int[] arrayOne, int[] arrayTwo) {
-        int[] matchNumbers = new int [arrayOne.length];
+    public static void fillArray(int[] array, InputType type) {
+        switch (type) {
+
+            case USER:
+                fillUserArray(array);
+                break;
+
+            case RANDOM:
+                fillRandomArray(array);
+                break;
+
+        }
+    }
+
+
+    public static int[] returnMatchNumbers(int[] arrayOne, int[] arrayTwo) {
+        int[] matchNumbers = new int[arrayOne.length];
         int j = 0;
         for (int i = 0; i < arrayOne.length; i++) {
 
             if (isNumInArray(arrayOne[i], arrayTwo)) {
-               matchNumbers [j] = arrayOne[i];
+                matchNumbers[j] = arrayOne[i];
                 j++;
 
-                }
             }
-        int[] result = new int [j];
+        }
+        int[] result = new int[j];
         for (int i = 0; i < j; i++) {
-            result [i] = matchNumbers[i];
+            result[i] = matchNumbers[i];
         }
         return result;
 
