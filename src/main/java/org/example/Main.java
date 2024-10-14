@@ -33,44 +33,16 @@ public class Main {
         int[] lotteryNumber = new int[COUNT_SET_SIZE];
         int[] userNumber = new int[COUNT_SET_SIZE];
 
-        fillArrays(true, userNumber);
-        fillArrays(false, lotteryNumber);
 
         int[] matchNumbers = returnMatchNumbers(lotteryNumber, userNumber);
 
-
-        System.out.println("Winning numbers: " + Arrays.toString(lotteryNumber));
         System.out.println("User entered numbers: " + Arrays.toString(userNumber));
+        System.out.println("Winning numbers: " + Arrays.toString(lotteryNumber));
         System.out.println("Matching numbers: " + Arrays.toString(matchNumbers));
 
-
     }
 
 
-    private static void fillArrays(boolean flag, int[] array) {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-
-        int i = 0;
-        while (i < COUNT_SET_SIZE) {
-            if (flag) {
-                System.out.println("Enter the " + (i + 1) + " number from 1 to 50");
-                int userEntered = scanner.nextInt();
-                if (userEntered < 1 || userEntered > 50) {
-                    System.out.println("Entered number does not belong to 1 to 50");
-                } else if (!isNumInArray(userEntered, array)) {
-                    array[i] = userEntered;
-                    i++;
-                }
-            } else {
-                int randomWin = random.nextInt(1, 51);
-                if (!isNumInArray(randomWin, array)) {
-                    array[i] = randomWin;
-                    i++;
-                }
-            }
-        }
-    }
 
     public static boolean isNumInArray(int num, int[] array) {
         for (int i = 0; i < array.length; i++) {
