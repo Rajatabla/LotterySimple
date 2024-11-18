@@ -14,7 +14,7 @@ public class Utils {
         while (i < Constants.COUNT_SET_SIZE) {
             System.out.println("Enter the " + (i + 1) + " number from 1 to 50");
             userEntered = scanner.nextInt();
-            if (userEntered < 1 || userEntered > 50) {
+            if (userEntered < Constants.MIN_NUMBER || userEntered > Constants.MAX_NUMBER) {
                 System.out.println("Entered number does not belong to 1 to 50");
             } else {
                 if (!isNumInArray(userEntered, array)) {
@@ -41,7 +41,7 @@ public class Utils {
         int i = 0;
         int randomWin = 0;
         while (i < Constants.COUNT_SET_SIZE) {
-            randomWin = random.nextInt(1, 51);
+            randomWin = random.nextInt(Constants.MIN_NUMBER, Constants.MAX_NUMBER + 1);
             if (!isNumInArray(randomWin, array)) {
                 array[i] = randomWin;
                 i++;

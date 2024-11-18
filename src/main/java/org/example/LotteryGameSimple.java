@@ -32,16 +32,14 @@ package main.java.org.example;
 //        Протестируйте работу лотереи в классе StartLottery
 //        Выведите результаты на консоль
 
+/*
+This is run Lottery Class
+ */
 public class LotteryGameSimple {
-
-
     public static void main(String[] args) {
-
         StartLottery game = new StartLottery();
         game.run();
-
     }
-
 }
 
 

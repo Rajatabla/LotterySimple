@@ -3,7 +3,7 @@ package main.java.org.example;
 import java.util.Arrays;
 
 public class StartLottery {
-    // This method strts the Lottery game
+    // This method starts the Lottery game
     public void run() {
         int[] lotteryNumber = new int[Constants.COUNT_SET_SIZE];
         int[] userNumber = new int[Constants.COUNT_SET_SIZE];
