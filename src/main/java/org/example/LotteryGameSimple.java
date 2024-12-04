@@ -36,7 +36,7 @@ package main.java.org.example;
 This is run Lottery Class
  */
 public class LotteryGameSimple {
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         StartLottery game = new StartLottery();
         game.run();
     }
